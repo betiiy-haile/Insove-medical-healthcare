@@ -15,12 +15,13 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div>
-      <Header />
-      <Hero />
-      <Stats />
-      <Services />
+      <Header />   
+      <Hero />    
+      <Stats />   
+      <Services />   
       <Appointment />
       <Testimonial />
+      {/* to be done */}
       <Teams />
       <Faq />
       <Departments />
