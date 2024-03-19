@@ -21,7 +21,6 @@ export default function App() {
       <Services />   
       <Appointment />
       <Testimonial />
-      {/* to be done */}
       <Teams />
       <Faq />
       <Departments />
