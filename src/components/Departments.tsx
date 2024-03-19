@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from "framer-motion"
 
 const Departments = () => {
     const [selectedLink, setSelectedLink] = useState('Laboratory Analysis');
@@ -51,9 +52,26 @@ const Departments = () => {
 
     return (
         <section className="departments section">
-            <div className="bg-grey bg-cover xl:bg-auto bg-center bg-no-repeat max-w-[1466px] mx-4 xl:mx-auto rounded-[20px] px-6 xl:px-0 py-12 xl:pt-[80px] xl:pb-[90px] relative min-h-[588px] flex items-center">
+            <motion.div 
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                    duration: 0.8,
+                    type: "tween",
+                }}
+                className="bg-grey bg-cover xl:bg-auto bg-center bg-no-repeat max-w-[1466px] mx-4 xl:mx-auto rounded-[20px] px-6 xl:px-0 py-12 xl:pt-[80px] xl:pb-[90px] relative min-h-[588px] flex items-center"
+            >
                 <div className="container mx-auto">
-                    <div className="flex flex-col xl:flex-row gap-x-5">
+                    <motion.div 
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            delay: 0.4,
+                            duration: 0.8,
+                            type: "tween",
+                        }}
+                        className="flex flex-col xl:flex-row gap-x-5"
+                    >
                         <div className="xl:w-[310px] flex flex-col gap-y-[30px] xl:gap-y[40px] font-medium uppercase text-center xl:text-left text-base text-[#9ab4b7] xl:pt-3 xl:text-[17px] mb-[50px] xl:mb-0">
                             {Object.keys(departmentContent).map((link) => (
                                 <div
@@ -83,9 +101,9 @@ const Departments = () => {
                                 Learn More
                             </button>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

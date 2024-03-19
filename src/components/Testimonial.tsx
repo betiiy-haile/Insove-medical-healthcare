@@ -2,6 +2,7 @@ import image from '../assets /img/testimonials/img.png'
 import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import Carousel from './Carousel';
 
+import { motion } from 'framer-motion';
 
 const testimonials = [
     {
@@ -36,8 +37,25 @@ const testimonials = [
 
 const Testimonial = () => {
     return (
-        <section className="bg-grey bg-cover bg-right bg-no-repeat py-12 xl:min-h-[595px] xl:py-0 ">
-            <div className="container mx-auto ">
+        <motion.section
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+                duration: 0.8,
+                type: "tween",
+            }}
+            className="bg-grey bg-cover bg-right bg-no-repeat py-12 xl:min-h-[595px] xl:py-0 "
+        >
+            <motion.div 
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                    delay: 0.4,
+                    duration: 0.8,
+                    type: "tween",
+                }}
+                className="container mx-auto "
+            >
                 <div className='flex  flex-col items-center gap-x-14 xl:flex-row'>
 
                     <div className='hidden xl:flex'>
@@ -71,8 +89,8 @@ const Testimonial = () => {
 
 
                 </div>
-            </div>
-        </section>
+            </motion.div>
+        </motion.section>
     )
 }
 

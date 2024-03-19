@@ -7,6 +7,8 @@ import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaPinterest } from "react-icons/fa";
 
+import { motion } from 'framer-motion'
+
 const teamMembers = [
   {
     id: 1,
@@ -38,19 +40,48 @@ const teamMembers = [
   },
 ];
 
+const itemVariants = {
+  hidden: {y: 100, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 1.5, staggerChildren: 0.5 }
+  },
+};
+
 const Teams = () => {
   return (
     <section className="team section">
       <div className="container mx-auto">
 
-        <h2 className="team__title h2 mb-[50px] text-center xl:text-left ">
+        <motion.h2
+          variants={itemVariants}
+          initial='hidden'
+          animate='visible'
+          transition={{
+            duration: 0.8,
+            type: "tween",
+          }}
+          className="team__title h2 mb-[50px] text-center xl:text-left "
+        >
           Our Team
-        </h2>
+        </motion.h2>
         <div className='flex flex-col mb-[20px] items-center gap-x-14 xl:flex-row'>
 
-            <div className='flex flex-col md:flex-row gap-9'>
-              {teamMembers.map((member) => (
-                <div key={member.id} className='flex flex-col xl:flex-row items-center gap-[30px] '>
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={itemVariants}
+              className='flex flex-col md:flex-row gap-9'
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  variants={itemVariants}
+                  transition={{ duration: 1 }}
+                  custom={index}
+                  className='flex flex-col xl:flex-row items-center gap-[30px] '
+                >
 
                   <div className='flex-1'>
                     <img src={member.image} alt="doctor one" />
@@ -77,15 +108,24 @@ const Teams = () => {
                       })}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
 
-            </div>
+            </motion.div>
 
         </div>
-        <div className="w-full flex px-6 xl:px-0 justify-end underline cursor-pointer">
+        <motion.div 
+          variants={itemVariants}
+          initial='hidden'
+          animate='visible'
+          transition={{
+            duration: 0.8,
+            type: "tween",
+          }}
+          className="w-full flex px-6 xl:px-0 justify-end underline cursor-pointer"
+        >
           All Team Members
-        </div>
+        </motion.div>
       </div>
     </section>
   )

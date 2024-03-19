@@ -27,7 +27,7 @@ const Carousel = ({ children: slides }: any) => {
     return (
         <div className="relative mx-auto w-full  overflow-hidden">
             <div
-                className="flex transition-transform duration-500 mb-12"
+                className="flex transition-transform  mb-12 duration-1000"
                 style={{
                     transform: `translateX(-${currentIndex * 100}%)`,
                     transition: 'transform 0.5s ease-in-out',

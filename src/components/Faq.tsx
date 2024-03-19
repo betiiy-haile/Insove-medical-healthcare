@@ -1,4 +1,5 @@
 import FaqItem from "./FaqItem";
+import { motion } from 'framer-motion'
 
 const questions = [
     {
@@ -19,17 +20,46 @@ const questions = [
     },
 ];
 
+const itemVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 1.5, staggerChildren: 0.5 }
+    },
+};
+
 
 const Faq = () => {
   return (
       <section className="faq">
           <div className="container mx-auto">
-              <h2 className="faq__title h2 text-center mb-[50px]">We've got answers</h2>
-              <div className="max-w-5xl mx-auto">
+              <motion.h2 
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                      duration: 0.8,
+                      type: "tween",
+                  }}
+                className="h2 text-center mb-[50px]"
+              >We've got answers</motion.h2>
+              <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={itemVariants}
+                className="max-w-5xl mx-auto"
+              >
                   {questions.map((item, index) => (
+                        <motion.div
+                          key={index}
+                          variants={itemVariants}
+                          transition={{ duration: 1 }}
+                          custom={index}
+                        >                            
                       <FaqItem key={index} question={item.question} answer={item.answer} />
+                      </motion.div>
                   ))}
-              </div>
+              </motion.div>
           </div>
       </section>
   )
