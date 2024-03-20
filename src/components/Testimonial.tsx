@@ -1,6 +1,6 @@
 import image from '../assets /img/testimonials/img.png'
 import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
-import Carousel from './Carousel';
+import Carousel from './utils/Carousel';
 
 import { motion } from 'framer-motion';
 

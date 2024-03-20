@@ -1,14 +1,34 @@
 import image from "../assets /img/newsletter/pattern.svg"
+import { motion } from "framer-motion";
+
+const itemVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 1.5, staggerChildren: 0.5 }
+    },
+};
 
 const Newsletter = () => {
     return (
         <section className="newsletter bg-accent-default md:h-[444px] py-12 flex items-center relative overflow-hidden ">
             
-            <div className="absolute bottom-0 left-0">
+            <motion.div 
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                className="absolute bottom-0 left-0"
+            >
                 <img src={image} alt="newsletter pattern image" />
-            </div>
+            </motion.div>
 
-            <div className="newsletter__container container mx-auto">
+            <motion.div 
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                className="newsletter__container container mx-auto"
+            >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-[58px] ">
                     <div className="flex-1 z-10 text-center md:text-left">
                         <div className="text-base uppercase text-white tracking-[2.24px] font-medium ">Our Newsletter</div>
@@ -22,7 +42,7 @@ const Newsletter = () => {
                         </div>
                         </form>
                 </div>
-            </div>
+            </motion.div>
 
         </section>
     )

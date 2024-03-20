@@ -2,6 +2,17 @@ import image1 from '../assets /img/blog/img-1.png';
 import image2 from '../assets /img/blog/img-2.png';
 import image3 from '../assets /img/blog/img-3.png';
 
+import { motion } from 'framer-motion';
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.5, staggerChildren: 0.5 }
+  },
+};
+
 const Blog = () => {
   const blogPosts = [
     {
@@ -38,10 +49,18 @@ const Blog = () => {
       <div className="container mx-auto">
         <h2 className="blog__title h2 mb-8 text-center xl:text-left">Our Recent Posts</h2>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={itemVariants}
+          className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start"
+        >
           {blogPosts.map((post, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={itemVariants}
+              transition={{ duration: 1 }}
+              custom={index}
               className="blog__post max-w-[420px] shadow-custom2 rounded-[10px] overflow-hidden cursor-pointer group"
             >
               <div className="relative overflow-hidden">
@@ -63,9 +82,9 @@ const Blog = () => {
                   Read More
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
